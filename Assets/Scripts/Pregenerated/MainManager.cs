@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class MainManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class MainManager : MonoBehaviour
     public Text ScoreText;
     public Text highScoreText;
     public GameObject GameOverText;
+
+    [SerializeField] String User;
     
     private bool m_Started = false;
     private int m_Points;
@@ -23,6 +26,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        User = DataSaver.Instance.userName.ToString();
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -66,6 +70,7 @@ public class MainManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
+            SaveDataInternally();
         }
         ScoreText.text = DataSaver.Instance.userName + $"'s Score : {m_Points}";
         highScoreText.text = "Best Score: "+
@@ -83,7 +88,14 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
-        DataSaver.Instance.highScore = m_Points;
+        SaveDataInternally();
         
+    }
+
+    public void SaveDataInternally()
+    {
+        DataSaver.Instance.highScore = m_Points;
+        DataSaver.Instance.userName = User;
+        Debug.Log("Data Saved");
     }
 }
