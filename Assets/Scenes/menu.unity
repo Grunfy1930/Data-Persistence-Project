@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 58682615}
   - component: {fileID: 58682614}
   - component: {fileID: 58682613}
-  - component: {fileID: 58682612}
   m_Layer: 5
   m_Name: NameField
   m_TagString: Untagged
@@ -159,19 +158,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &58682612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58682610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ce2504fd4ecd7748b52b3776c5487c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  userName: {fileID: 1247884822}
 --- !u!114 &58682613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,7 +723,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1542844011}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
-        m_MethodName: MainMenu
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -952,7 +938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 70}
+  m_AnchoredPosition: {x: 0, y: 140}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &779793125
@@ -975,7 +961,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Highscore
+  m_text: 'Current Highscore is:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1462,6 +1448,7 @@ GameObject:
   - component: {fileID: 1542844013}
   - component: {fileID: 1542844012}
   - component: {fileID: 1542844011}
+  - component: {fileID: 1542844016}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1481,6 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3411f29b98dd542b813299aa3b3846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userName: {fileID: 1247884822}
 --- !u!114 &1542844012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1567,6 +1555,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1542844016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542844010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9538eb6fe83801a4bb518fd942979a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highestScore: {fileID: 779793125}
 --- !u!1 &1569771745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,6 +1651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userName: 
   highScore: 0
+  isThereAScore: 0
 --- !u!4 &1740441015
 Transform:
   m_ObjectHideFlags: 0

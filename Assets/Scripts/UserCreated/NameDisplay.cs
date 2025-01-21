@@ -6,7 +6,9 @@ public class NameDisplay : MonoBehaviour
     public TextMeshProUGUI userName;
     public void Update()
     {
-        DataSaver.Instance.userName = userName.text;
+        userName.text = "Best Score: "+
+        DataSaver.Instance.userName + " : " +
+        DataSaver.Instance.highScore.ToString();
     }
     
 }
