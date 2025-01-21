@@ -16,7 +16,7 @@ public class MainManager : MonoBehaviour
     public Text highScoreText;
     public GameObject GameOverText;
 
-    [SerializeField] String User;
+    public String User;
     
     private bool m_Started = false;
     private int m_Points;
@@ -27,7 +27,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        User = DataSaver.Instance.userName.ToString();
+        User = DataSaver.Instance.currentUserName.ToString();
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -74,7 +74,7 @@ public class MainManager : MonoBehaviour
             SaveDataInternally();
             
         }
-        ScoreText.text = DataSaver.Instance.userName + $"'s Score : {m_Points}";
+        ScoreText.text = DataSaver.Instance.currentUserName + $"'s Score : {m_Points}";
         highScoreText.text = "Best Score: "+
         DataSaver.Instance.userName + " : " +
         DataSaver.Instance.highScore.ToString();
@@ -96,9 +96,13 @@ public class MainManager : MonoBehaviour
 
     public void SaveDataInternally()
     {
-        DataSaver.Instance.highScore = m_Points;
-        DataSaver.Instance.userName = User;
-        Debug.Log("Data Saved");
+        if (m_Points > DataSaver.Instance.highScore)
+        {
+            DataSaver.Instance.highScore = m_Points;
+            DataSaver.Instance.userName = User;
+        }
+        
+        
 
         if (m_Points > 0)
             {
@@ -107,4 +111,6 @@ public class MainManager : MonoBehaviour
 
         
     }
+
+
 }

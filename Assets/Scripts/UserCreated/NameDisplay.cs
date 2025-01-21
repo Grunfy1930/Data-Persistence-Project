@@ -4,7 +4,7 @@ using UnityEngine;
 public class NameDisplay : MonoBehaviour
 {
     public TextMeshProUGUI userName;
-    public void Update()
+    public void Start()
     {
         userName.text = "Best Score: "+
         DataSaver.Instance.userName + " : " +
